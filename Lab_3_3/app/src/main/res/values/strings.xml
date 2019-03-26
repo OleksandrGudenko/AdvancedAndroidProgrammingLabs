@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Lab_3_3</string>
+    <string name="mammals">Mammals</string>
+    <string name="press_mammals">Press animal to hear it</string>
+    <string name="bear">Bear</string>
+    <string name="wolf">Wolf</string>
+    <string name="elephant">Elephant</string>
+    <string name="lamb">Lamb</string>
+
+<!--Birds-->
+    <string name="birds">Birds</string>
+    <string name="press_birds">Press bird to hear it</string>
+    <string name="eagle_owl_bird">Eagle Owl</string>
+    <string name="finch">Finch</string>
+    <string name="wren">Wren</string>
+    <string name="bullfinch">Bullfinch</string>
+
+</resources>

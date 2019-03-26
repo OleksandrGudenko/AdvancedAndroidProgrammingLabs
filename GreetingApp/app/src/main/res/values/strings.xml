@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Greeting App</string>
+    <string name="english">English</string>
+    <string name="svenska">Svenska</string>
+    <string name="suomeksi">Suomeksi</string>
+    <string name="surprise">Surprise</string>
+    <string name="hint">Write Your Name Here</string>
+</resources>

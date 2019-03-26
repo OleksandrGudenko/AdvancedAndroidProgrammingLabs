@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Button Game</string>
+    <string name="button_pressed_first_part"><Y>YOU HAVE PRESSED BUTTON </Y></string>
+    <string name="button_pressed_later_part"> TIMES.</string>
+    <string name="boot_button_name">Hello I\'m code generated button</string>
+</resources>

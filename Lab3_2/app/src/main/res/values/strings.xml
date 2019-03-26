@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Lab3_2</string>
+    <string name="open_map">Open Map</string>
+    <string name="make_call">Make Call</string>
+    <string name="go">Go</string>
+</resources>

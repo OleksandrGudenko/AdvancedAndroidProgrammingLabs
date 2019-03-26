@@ -1,0 +1,255 @@
+﻿#1. Object
+
+    contains data and behaviours.
+
+    Animal Jeff = new Animal();
+    Jeff.name = "Jeff";
+    Jeff.type = "feline";
+
+
+
+#2. Class
+
+    New > Java Class
+    A blueprint for an object.
+
+    public class Person {
+
+        private string name;
+        private string age;
+
+        public Person(string a, int b){
+            name = a;
+            age = b;
+        }
+
+    }
+
+#3. Instantiation of object (creating an object)
+
+    object created from class.
+
+    // this is class form #2
+
+    Person Peter = new Person("Peter Parker", 25 );
+
+
+#4. Visibility (public / private / protected)
+
+    public = method that is allowed to be used by everyone.
+        Ex. #2 public Person method is called in #3 to create person Peter with name and age.
+
+    private = method that is limited to the class it is declared in.
+        in #3 I did not call Peter.name or Peter.age as they are restricted to their calss and can not be executed outside.
+
+    protected = method that is accessible in declared class and it's inheritance.
+
+        // lest assue this is a string in #2 class Person
+        protected string relationship;
+        //here is new class
+        public class officer extends Person {
+
+            string relationship = married;
+
+        }
+    
+
+#5. Member datas / methods
+
+    Data member is a variable declared inside a class. Can be private or public.
+    Member methods is a methods declared inside a class. Also can be private or public.
+    
+    // code examples in #2,#3,#4
+
+
+#6. Inheritance
+
+    New created class can "inherite" use member datas nad methods of inherited class(other class).
+
+    // code example on #4 under protected
+
+#7. Interface
+
+    It is similar to a class. It is a collection of abstract methods. 
+    Class can implement interface therefore inherite abstract methods.
+
+    // this is not a full code but I hope it is enough to showcase interfase
+    public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+        ///...///
+        Button myButton = findViewById(R.id.my_button);
+        myButton.setText("Hello there..");
+        myButton.setOnClickListener(this);
+
+        @Override
+        public void onClick(View v) {
+            TextView textView = findViewById(R.id.hello_text);
+
+            if(v.getId() == R.id.my_button){
+                textView.setText("General Kenobi!");
+            }
+
+        }
+    }
+
+#8. Polymorphism
+
+    same action that can be perfomed in multiple different ways.
+
+    class Animal{
+
+        public void move(){
+
+        System.out.println(Animals are alive!!”);
+
+        }
+
+    }
+
+    class Cat extends Animal{
+
+        public void move(){
+
+        System.out.println("Cats can eat!!”);
+
+        }
+
+    }
+
+    class Test{
+
+        public static void main(String[] args){
+
+        Animal example=new Cat();
+
+        example.move();    // prints Cats can eat!!
+
+        example=new Animal();
+
+        example.move();    // prints Animals are alive!!
+
+        }
+
+    }
+
+#9. Overriding
+
+    is a type of polymorphism in Java. The inherited methods can be overriden in order to add more funtionality.
+
+    //example is continuation of class #2
+
+    @Override
+    public Person(string a, int b){
+        if (a.lenght != 0 && b.lenght != 0)
+            name = a;
+            age = b;
+        }
+
+
+#10.Abstract classes
+
+    class available only for Inheritance for other classes. Can not be accessed directly.
+
+    // same code as in #8 but modified to showcase abstract classes
+        Abstract class Animal{
+
+        public string species;
+        species = Cats can eat!!;
+
+        public void move(){
+
+        System.out.println(species);
+
+        }
+
+    }
+
+    class Cat extends Animal{
+
+
+        public void move(){
+
+        System.out.println(species);
+
+        }
+
+    }
+
+    class Test{
+
+        public static void main(String[] args){
+
+        Animal example=new Cat();
+        example.move();    // prints Cats can eat!!
+
+
+        //direct access to Animal
+        example=new Animal();
+        example.move();    // will not work
+        }
+
+    }
+
+
+Lab1_3
+Answer to following questions:
+1. What programming languages you can use for Android app development?
+	Kotlin, Java, C++
+
+2. What is .apk file?
+	stands for "Android Package", is an archive that contains all the contants
+	of an Android app. This file is used by Android devices to insatll application.
+
+3. How Android system runs apps?
+	Android system is a multi-user Linux system in which each app is a different user
+	System assign ID to the app than assign files and sets files permissions to be accessible
+	by that  user ID(app) only.
+	All apps is a separate VM => all code is run in separation.
+	Android implements "principle of least privilege" which means that each app, by default,
+	has access only to the components that it requires to do its work and no more.
+	it is possible to share data between 2 or more apps if they are given same Linux user ID
+	and be signed with same sertificate. This will lead to apps sharing same VM and therefore
+	files.
+
+4. Name four types of Android components. Describe each.
+	Activities
+	basically independent "view" components that combined create application. Each activity
+	is a screen that user interested in => User can navigate app and view this activities that 
+	have different features. As this activities can be called independetly user can open said
+	activity and therefore skip previous. This feature best showcased by "share" option 
+	where user what to share a picture by using some app. User is interested in sharing so 
+	it is to no interest of a user of opening an app and navigating to sharing instead of being
+	send there immediatly.
+
+	Services
+	is a component that is running in the background in order to keep some of the features
+	of the app active.It does not have a UI, ex. spotify playing music while user browing 
+	other app. Syncing data in the background is the most common use of the feature 
+	besides music streaming. Can and is run side by side with activity. Automatically 
+	managed by Android system. Android need more RAM => service being killed to later be
+	restarted
+
+	Broadcast receivers
+	Is a way to schedule when the app is needed. Example reminders, app might closed to 
+	save battery and run only when broadcast reciever(or its INTENT) reminds app to execute.
+	Recieve broadcast messages from the system(phone battery is low, phone is charging now).
+
+	Content Providers
+	is a way to manage shared set of app data that is stored in the file system. Apps can modify
+	the data if content provider allows it. This data can be used by other apps. Example taking
+	using camera to take the picture for other app to use. Because Android can run different
+	apps activities, lunching camera app and taking a picture throug another app to use in that
+	app in not a problem.
+
+5. What is manifest file and what is its purpose?
+ 	Manifest is used for declaretion of the components and permissions the device require 
+	for the app to run. User permissions(ex. internet access), Minimum API level, Hardware
+	and Software reatures(ex. camera, bluetooth..), API Libraries(ex. Google Maps library)
+	
+6. What are resources? Why they are needed?
+	 Resoures are everything else beside the code that app needs to function, such as
+	different images and languages depending on the screen size of the device and language.
+	
+	To optimize user expririence and made app more functional. Loading apropriate sized
+	resurses is nessissary to make app function. Some users will abstain to use app if it is
+	not localized.
+
