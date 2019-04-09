@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Lab4_1_volley</string>
+    <string name="stock_monitor">Stock Monitor</string>
+    <string name="go">Go</string>
+    <string name="google">https://google.com</string>
+    <string name="stock_monitor_v2">Stock Monitor V2</string>
+    <string name="add">Add</string>
+    <string name="stock_name">Stock Name</string>
+    <string name="stock_id">Stock Id</string>
+</resources>
