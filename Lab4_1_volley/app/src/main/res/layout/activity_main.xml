@@ -18,12 +18,14 @@
         android:id="@+id/edit_text_link"
         android:layout_width="0dp"
         android:layout_weight="1"
+        android:inputType="text"
         android:layout_height="wrap_content"
         android:hint="@string/google"
         app:layout_constraintRight_toRightOf="@+id/btnGo"
         />
     <Button
         android:id="@+id/btnGo"
+        android:onClick="onClick"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -45,7 +47,8 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/stock_monitor"
+        android:id="@+id/btnStockMonitor"
+        android:onClick="onClick"
         android:text="@string/stock_monitor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>

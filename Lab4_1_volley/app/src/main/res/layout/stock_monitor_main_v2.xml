@@ -19,6 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/edit_text_stock_name"
+        android:inputType="text"
         android:hint="@string/stock_name"
         app:layout_constraintBottom_toTopOf="@+id/bottom_layout"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -36,11 +37,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/edit_text_stock_id"
+            android:inputType="text"
             android:hint="@string/stock_id"
             android:layout_weight="1"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="onClick"
             android:text="@string/add"
             android:id="@+id/btnAdd"/>
 

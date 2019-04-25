@@ -1,6 +1,5 @@
 package advanced.android.lab4_1_volley;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -9,8 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -22,7 +19,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class StockMonitorV2 extends AppCompatActivity {
+public class StockMonitorV2 extends AppCompatActivity implements View.OnClickListener {
 
     private String[] companies = { "AAPL", "GOOGL", "FB", "NOK" };
     public EditText stockName, stockId;
@@ -47,7 +44,6 @@ public class StockMonitorV2 extends AppCompatActivity {
 
         stockName = findViewById(R.id.edit_text_stock_name);
         stockId = findViewById(R.id.edit_text_stock_id);
-        btnAdd = (findViewById(R.id.btnAdd));
 
         stockToDisplay = new ArrayList<>();
 
@@ -56,18 +52,17 @@ public class StockMonitorV2 extends AppCompatActivity {
 
         getMyStock();
 
-        btnAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                String companyNickName = stockName.getText().toString();
-                String companyStockId = stockId.getText().toString();
+    }
 
-                addNewStock(companyNickName, companyStockId);
+    @Override
+    public void onClick(View v) {
+        if(v.getId() == R.id.btnAdd) {
+            String companyNickName = stockName.getText().toString();
+            String companyStockId = stockId.getText().toString();
 
-            }
-        });
-
+            addNewStock(companyNickName, companyStockId);
+        }
     }
 
     private void getMyStock(){
@@ -84,13 +79,13 @@ public class StockMonitorV2 extends AppCompatActivity {
                     if (company.equals("NOK")){
                         fullName = "Nokia";
                     }
-                    if (company.equals("AAPL")) {
+                    else if (company.equals("AAPL")) {
                         fullName = "Apple";
                     }
-                    if (company.equals("FB")){
+                    else if (company.equals("FB")){
                         fullName = "Facebook";
                     }
-                    if (company.equals("GOOGL")) {
+                    else if (company.equals("GOOGL")) {
                         fullName = "Google";
                     }
 

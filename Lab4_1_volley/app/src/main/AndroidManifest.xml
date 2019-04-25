@@ -11,13 +11,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".StockMonitor"
-            android:label="@string/stock_monitor"></activity>
+            android:label="@string/stock_monitor">
+        </activity>
         <activity android:name=".StockMonitorV2"
-            android:label="@string/stock_monitor_v2"></activity>
+            android:label="@string/stock_monitor_v2">
+        </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

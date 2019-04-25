@@ -7,8 +7,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -21,7 +19,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 
-public class StockMonitor extends AppCompatActivity {
+public class StockMonitor extends AppCompatActivity implements View.OnClickListener {
 
     private String[] companies = { "AAPL", "GOOGL", "FB", "NOK" };
     private RequestQueue mQueue;
@@ -48,16 +46,14 @@ public class StockMonitor extends AppCompatActivity {
 
 
         getMyStock();
+    }
 
-        findViewById(R.id.btnStockMonitorV2).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    @Override
+    public void onClick(View v) {
+            if (v.getId() == R.id.btnStockMonitorV2) {
                 Intent intent = new Intent(StockMonitor.this, StockMonitorV2.class);
                 startActivity(intent);
             }
-        });
-
-
     }
 
     private void getMyStock(){

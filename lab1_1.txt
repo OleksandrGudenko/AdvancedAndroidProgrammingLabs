@@ -64,7 +64,7 @@
 
 #6. Inheritance
 
-    New created class can "inherite" use member datas nad methods of inherited class(other class).
+    New created class can "inherite" use member datas and methods of inherited class(other class).
 
     // code example on #4 under protected
 
@@ -119,13 +119,13 @@
 
         public static void main(String[] args){
 
-        Animal example=new Cat();
+        	Animal example=new Cat();
 
-        example.move();    // prints Cats can eat!!
+        	example.move();    // prints Cats can eat!!
 
-        example=new Animal();
+       	 example=new Animal();
 
-        example.move();    // prints Animals are alive!!
+        	example.move();    // prints Animals are alive!!
 
         }
 
@@ -152,23 +152,21 @@
     // same code as in #8 but modified to showcase abstract classes
         Abstract class Animal{
 
-        public string species;
-        species = Cats can eat!!;
+        	public string species;
+        	species = Cats can eat!!;
 
-        public void move(){
-
-        System.out.println(species);
-
-        }
+        	public void move(){
+        		System.out.println(species);
+	 }
 
     }
 
-    class Cat extends Animal{
 
+    class Cat extends Animal{
 
         public void move(){
 
-        System.out.println(species);
+        	System.out.println(species);
 
         }
 
@@ -197,7 +195,7 @@ Answer to following questions:
 
 2. What is .apk file?
 	stands for "Android Package", is an archive that contains all the contants
-	of an Android app. This file is used by Android devices to insatll application.
+	of an Android app. This file is used by Android devices to install application.
 
 3. How Android system runs apps?
 	Android system is a multi-user Linux system in which each app is a different user
@@ -235,15 +233,15 @@ Answer to following questions:
 
 	Content Providers
 	is a way to manage shared set of app data that is stored in the file system. Apps can modify
-	the data if content provider allows it. This data can be used by other apps. Example taking
+	the data if content provider allows it. This data can be used by other apps. Example
 	using camera to take the picture for other app to use. Because Android can run different
-	apps activities, lunching camera app and taking a picture throug another app to use in that
+	apps activities, lunching camera app and taking a picture through another app to use in that
 	app in not a problem.
 
 5. What is manifest file and what is its purpose?
  	Manifest is used for declaretion of the components and permissions the device require 
 	for the app to run. User permissions(ex. internet access), Minimum API level, Hardware
-	and Software reatures(ex. camera, bluetooth..), API Libraries(ex. Google Maps library)
+	and Software features(ex. camera, bluetooth..), API Libraries(ex. Google Maps library)
 	
 6. What are resources? Why they are needed?
 	 Resoures are everything else beside the code that app needs to function, such as

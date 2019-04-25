@@ -29,6 +29,7 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        android:onClick="onClick"
         android:text="@string/stock_monitor_v2"
         android:id="@+id/btnStockMonitorV2"/>
 </android.support.constraint.ConstraintLayout>

@@ -15,10 +15,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     EditText link;
-    Button go, stockMonitor;
     TextView textViewMain;
 
     @Override
@@ -27,47 +26,45 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         link = findViewById(R.id.edit_text_link);
-        go = findViewById(R.id.btnGo);
         textViewMain = findViewById(R.id.textViewMain);
-        stockMonitor = findViewById(R.id.stock_monitor);
 
-        go.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Instantiate the RequestQueue.
-                RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
-                String url = link.getText().toString();
-                if( url.equals("")){
-                    url = "https://google.com";
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.btnGo) {
+            // Instantiate the RequestQueue.
+            RequestQueue queue = Volley.newRequestQueue(MainActivity.this);
+            String url = link.getText().toString();
+            if (url.equals("")) {
+                url = "https://google.com";
+            }
+
+            // Request a string response from the provided URL.
+            StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            // Display the first 500 characters of the response string.
+                            textViewMain.setText("Response is: " + response.substring(0, 5000));
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    textViewMain.setText("That didn't work!");
                 }
+            });
 
-                // Request a string response from the provided URL.
-                StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                        new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-                                // Display the first 500 characters of the response string.
-                                textViewMain.setText("Response is: "+ response.substring(0,5000));
-                            }
-                        }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        textViewMain.setText("That didn't work!");
-                    }
-                });
+            // Add the request to the RequestQueue.
+            queue.add(stringRequest);
+        }
 
-                // Add the request to the RequestQueue.
-                queue.add(stringRequest);
-            }
-        });
+        if (v.getId() == R.id.btnStockMonitor) {
 
-        stockMonitor.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, StockMonitor.class);
-                startActivity(intent);
+            Intent intent = new Intent(MainActivity.this, StockMonitor.class);
+            startActivity(intent);
 
-            }
-        });
+        }
     }
 }
