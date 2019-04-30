@@ -3,4 +3,10 @@
     <string name="open_map">Open Map</string>
     <string name="make_call">Make Call</string>
     <string name="go">Go</string>
+    <string name="oamk_link">www.oamk.fi/en</string>
+
+    <string-array name="protocol_arrays">
+        <item>https://</item>
+        <item>http://</item>
+    </string-array>
 </resources>

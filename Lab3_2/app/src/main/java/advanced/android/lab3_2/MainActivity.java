@@ -7,55 +7,71 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     public Button btnOpenMap, btnMakeCall, btnGo;
     private EditText editText;
+    private Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         btnOpenMap = findViewById(R.id.btn_open_map);
         btnMakeCall = findViewById(R.id.btn_make_call);
         btnGo = findViewById(R.id.btn_go);
         editText = findViewById(R.id.search_edit_text);
-        editText.setText("https://www.oamk.fi/en");
+//        editText.setText("www.oamk.fi/en");
 
-        btnOpenMap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        btnOpenMap.setOnClickListener(this);
+        btnMakeCall.setOnClickListener(this);
+        btnGo.setOnClickListener(this);
+        addListenerOnSpinnerItemSelection();
 
+    }
+
+    private void addListenerOnSpinnerItemSelection() {
+        spinner = findViewById(R.id.protocol_spinner);
+        spinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+    }
+
+
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId()) {
+            case R.id.btn_open_map:
                 Uri location = Uri.parse("geo:64.9995232,25.5116093?q=Kotkantie 1, Oulu, 90130"); // z param is zoom level
                 Intent mapIntent = new Intent(Intent.ACTION_VIEW, location);
                 startActivity(mapIntent);
+                break;
 
-            }
-        });
-
-        btnMakeCall.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            case R.id.btn_make_call:
                 Uri number = Uri.parse("tel:020 611 0200");
                 Intent callIntent = new Intent(Intent.ACTION_DIAL, number);
                 startActivity(callIntent);
-            }
-        });
+                break;
 
-        btnGo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            case R.id.btn_go:
+                String protocol = String.valueOf(spinner.getSelectedItem());
                 editText = findViewById(R.id.search_edit_text);
-                String website = editText.getText().toString();
-                Uri webpage = Uri.parse(website);
+                String website;
+                if (editText.getText().toString().equals("")) {
+                    website = "www.oamk.fi/en";
+                } else {
+                    website = editText.getText().toString();
+                }
+                Uri webpage = Uri.parse(protocol + website);
                 Intent webIntent = new Intent(Intent.ACTION_VIEW, webpage);
                 startActivity(webIntent);
-            }
-        });
-    }
+                break;
+        }
 
+    }
 
 }

@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private ImageView bearImage, wolfImage, elephantImage, lambImage,
                       owlImage, finchImage, wrenImage, bullfinchImage;
@@ -54,50 +54,10 @@ public class MainActivity extends AppCompatActivity {
         elephantImage = findViewById(R.id.image_elephant);
         lambImage = findViewById(R.id.image_lamb);
 
-        bearImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this,
-                        "Bear clicked",
-                        Toast.LENGTH_SHORT).show();
-
-                mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.bear);
-                mediaPlayer.start();
-            }
-        });
-
-        wolfImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this,
-                        "Wolf clicked",
-                        Toast.LENGTH_SHORT).show();
-                mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.wolf);
-                mediaPlayer.start();
-            }
-        });
-
-        elephantImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this,
-                        "Elephant clicked",
-                        Toast.LENGTH_SHORT).show();
-                mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.elephant);
-                mediaPlayer.start();
-            }
-        });
-
-        lambImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(MainActivity.this,
-                        "Lamb clicked",
-                        Toast.LENGTH_SHORT).show();
-                mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.lamb);
-                mediaPlayer.start();
-            }
-        });
+        bearImage.setOnClickListener(this);
+        wolfImage.setOnClickListener(this);
+        elephantImage.setOnClickListener(this);
+        lambImage.setOnClickListener(this);
     }
 
     void birdsOnClick() {
@@ -107,48 +67,77 @@ public class MainActivity extends AppCompatActivity {
         wrenImage = findViewById(R.id.image_wren);
         bullfinchImage = findViewById(R.id.image_bullfinch);
 
-        owlImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        owlImage.setOnClickListener(this);
+        finchImage.setOnClickListener(this);
+        wrenImage.setOnClickListener(this);
+        bullfinchImage.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.image_bear:
+                Toast.makeText(MainActivity.this,
+                        "Bear clicked",
+                        Toast.LENGTH_SHORT).show();
+
+                mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.bear);
+                mediaPlayer.start();
+                break;
+
+            case R.id.image_wolf:
+                Toast.makeText(MainActivity.this, "Wolf clicked", Toast.LENGTH_SHORT).show();
+                mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.wolf);
+                mediaPlayer.start();
+                break;
+
+            case R.id.image_elephant:
+                Toast.makeText(MainActivity.this,
+                        "Elephant clicked",
+                        Toast.LENGTH_SHORT).show();
+                mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.elephant);
+                mediaPlayer.start();
+                break;
+
+            case R.id.image_lamb:
+                Toast.makeText(MainActivity.this,
+                        "Lamb clicked",
+                        Toast.LENGTH_SHORT).show();
+                mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.lamb);
+                mediaPlayer.start();
+                break;
+
+            case R.id.image_eagle_owl:
                 Toast.makeText(MainActivity.this,
                         "Eagle Owl clicked",
                         Toast.LENGTH_SHORT).show();
                 mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.huuhkaja_norther_eagle_owl);
                 mediaPlayer.start();
-            }
-        });
+                break;
 
-        finchImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            case R.id.image_finch:
                 Toast.makeText(MainActivity.this,
                         "Finch clicked",
                         Toast.LENGTH_SHORT).show();
                 mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.peippo_chaffinch);
                 mediaPlayer.start();
-            }
-        });
+                break;
 
-        wrenImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            case R.id.image_wren:
                 Toast.makeText(MainActivity.this,
                         "Wren clicked",
                         Toast.LENGTH_SHORT).show();
                 mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.peukaloinen_wren);
                 mediaPlayer.start();
-            }
-        });
+                break;
 
-        bullfinchImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+            case R.id.image_bullfinch:
                 Toast.makeText(MainActivity.this,
                         "Bullfinch clicked",
                         Toast.LENGTH_SHORT).show();
                 mediaPlayer = MediaPlayer.create(MainActivity.this, R.raw.punatulkku_northern_bullfinch);
                 mediaPlayer.start();
-            }
-        });
+                break;
+        }
     }
 }

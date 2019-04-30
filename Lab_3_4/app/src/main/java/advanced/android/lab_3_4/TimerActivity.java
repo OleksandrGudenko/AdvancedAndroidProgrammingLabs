@@ -23,7 +23,7 @@ public class TimerActivity extends AppCompatActivity {
         setContentView(R.layout.timer_activity);
 
         String countdown = getIntent().getStringExtra("countdown");
-        int time = Integer.parseInt(countdown) * 1000;
+        int time = (Integer.parseInt(countdown) + 1) * 1000;
 
         timerView = findViewById(R.id.countdown);
 

@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private TextView timerView;
     private Button btnStart;
@@ -21,23 +21,24 @@ public class MainActivity extends AppCompatActivity {
         timerView =findViewById(R.id.timer_number);
         btnStart = findViewById(R.id.btnStart);
 
-        btnStart.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String time = timerView.getText().toString();
+        btnStart.setOnClickListener(this);
+    }
 
-                if (time.length() > 0) {
-                    Intent intent = new Intent(MainActivity.this, TimerActivity.class);
-                    intent.putExtra("countdown", time);
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(MainActivity.this, "Timer cannot be 0 seconds!",
-                            Toast.LENGTH_LONG).show();
-                }
+    @Override
+    public void onClick(View v) {
 
+        if(v.getId() == R.id.btnStart){
+            String time = timerView.getText().toString();
 
-
+            if (time.length() > 0 && !time.equals("0")) {
+                Intent intent = new Intent(MainActivity.this, TimerActivity.class);
+                intent.putExtra("countdown", time);
+                startActivity(intent);
+            } else {
+                Toast.makeText(MainActivity.this, "Timer cannot be 0 seconds!",
+                    Toast.LENGTH_LONG).show();
             }
-        });
+
+        }
     }
 }
